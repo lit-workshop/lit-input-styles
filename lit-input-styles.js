@@ -1,32 +1,35 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import { LitElement, html } from "lit-element";
 
 /**
  * `lit-input-styles`
- * 
+ *
  *
  * @customElement
  * @polymer
  * @demo demo/index.html
  */
-class LitInputStyles extends PolymerElement {
-  static get template() {
+class LitInputStyles extends LitElement {
+  render() {
     return html`
       <style>
-        :host {
-          display: block;
+        .input-text {
+          border: 1px solid var(--neutral-color);
+          font-size: var(--font-size);
+          margin: 5px 0px;
+          border-radius: 4px;
+        }
+
+        .input-text:focus {
+          outline: none;
+          border: 2px solid var(--primary-light-color);
         }
       </style>
-      <h2>Hello [[prop1]]!</h2>
     `;
   }
-  static get properties() {
-    return {
-      prop1: {
-        type: String,
-        value: 'lit-input-styles',
-      },
-    };
+
+  createRenderRoot() {
+    return this;
   }
 }
 
-window.customElements.define('lit-input-styles', LitInputStyles);
+window.customElements.define("lit-input-styles", LitInputStyles);
